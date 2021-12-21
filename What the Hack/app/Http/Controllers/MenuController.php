@@ -54,22 +54,22 @@ class MenuController extends Controller
     public function store() {
         $request = request();
         $validatedRequest = $request->validate([
-            'name' => ['required', 'string', 'max:255', 'unique'],
+            'name' => ['required', 'string', 'max:255', 'unique:menus,name'],
             'category_id' => ['required', 'integer']
         ]);
         if (isset($request->id)) { // edit
             $menu = Menu::where('id', $request->id)->first();
             $menu->update($validatedRequest);
-            return redirect('/menu/index');
+            return redirect('/menu');
         } else { // create
             Menu::create($validatedRequest);
-            return redirect('/menu/index');
+            return redirect('/menu');
         }
     }
 
     public function destroy($id) {
         $menu = Menu::where('id', $id)->first();
         $menu->delete();
-        return redirect('/menu/index');
+        return redirect('/menu');
     }
 }

@@ -25,9 +25,10 @@
         <div class="grid grid-cols-12 mb-16 mx-32 mt-8 gap-8">
             <h1 class="col-span-12">Dashboard</h1>
             <ul class="col-span-12">
-                <li><a class="textLink" href="/user/index">User</a></li>
-                <li><a class="textLink" href="/menu/index">Menu</a></li>
-                <li><a class="textLink" href="/article/index">Article</a></li>
+                <li><a class="textLink" href="/user">User</a></li>
+                <li><a class="textLink" href="/menu">Menu</a></li>
+                <li><a class="textLink" href="/cat">Category</a></li>
+                <li><a class="textLink" href="/article">Article</a></li>
             </ul>
         </div>
     </div>

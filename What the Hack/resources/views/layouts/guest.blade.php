@@ -28,16 +28,7 @@
                         </a>
                     </div>
                     <div>
-                        <nav>
-                            @php
-                                $menuItems = \App\Models\Menu::all();
-                                foreach ($menuItems as $menuItem) {
-                                    $route = strtolower($menuItem->name);
-                                    echo "<a class='textLink' href='/$route'>$menuItem->name</a>";
-                                }
-                            @endphp
-                        </nav>
-                        <div class="header__navUnderline"></div>
+                        @include('layouts.nav')
                     </div>
                 </div>
             </header>

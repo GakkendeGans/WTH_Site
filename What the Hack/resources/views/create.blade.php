@@ -1,4 +1,7 @@
+@extends('layouts/app')
+
 <x-app-layout>
+@section('content') 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ ucfirst($route) }}
@@ -35,11 +38,16 @@
                             @else
                                 <div class="mb-2">
                                     <label for="{{ $cols[$i] }}">{{ $desc[$i] }}</label><br>
-                                    <input type="{{ $input_types[$i] }}" name="{{ $cols[$i] }}" id="{{ $cols[$i] }}" required
-                                           @isset($data)
-                                           value="{{ $data->{$cols[$i]} }}"
-                                        @endisset
-                                    ><br>
+                                    @if($cols[$i] == 'body')
+                                        <textarea name="{{ $cols[$i] }}" id="{{ $cols[$i] }}" rows="5" cols="80">@isset($data){{ $data->{$cols[$i]} }} @endisset</textarea>
+                                        hier moet nog een Wysiwyg editor
+                                    @else
+                                        <input type="{{ $input_types[$i] }}" {{ ($input_types[$i] == 'password')?"autocomplete=new-password aria-autocomplete=list":'required'; }} name="{{ $cols[$i] }}" id="{{ $cols[$i] }}" 
+                                            @isset($data)
+                                            value="{{ $data->{$cols[$i]} }}"
+                                            @endisset
+                                        ><br>
+                                    @endif
                                     @error($cols[$i])
                                     <p class="mt-2 text-red-600">{{ $message }}</p>
                                     @enderror
@@ -47,12 +55,14 @@
                             @endif
                         @endfor
                         <div class="flex">
-                            <a href="/{{ $route }}/index" class="mr-2">Cancel</a>
-                            <input type="submit" value="Submit">
+                            <a href="/{{ $route }}" class="button__tertiary button__primary__verySmall">Cancel</a>
+                            <button type="submit" class="button__tertiary button__primary__verySmall" value="Submit">Submit</button>
+                            <!-- <input type="submit" value="Submit"> -->
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+@endsection
 </x-app-layout>

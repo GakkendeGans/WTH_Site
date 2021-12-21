@@ -111,8 +111,11 @@
 }
 .button__tertiary {
   color: #000000;
+  background-color: #9ca3af;
   font-size: 1rem;
   font-weight: normal;
+  margin-right: 10px;
+  border-radius: 4px;
 }
 .button__tertiary:hover {
   color: #C93E9D;
@@ -504,7 +507,7 @@ button,
 [type='reset'],
 [type='submit'] {
   -webkit-appearance: button; /* 1 */
-  background-color: transparent; /* 2 */
+  /* background-color: transparent; */ /* 2 */
   background-image: none; /* 2 */
 }
 

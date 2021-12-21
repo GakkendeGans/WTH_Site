@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
@@ -33,11 +34,12 @@ class UserController extends Controller
 
     public function edit($id) {
         $user = User::where('id', $id)->first();
+        $user->password = '';
         return view('create', [
             'data' => $user,
-            'cols' => ['name', 'email'],
-            'desc' => ['Name', 'E-mail'],
-            'input_types' => ['text', 'email'],
+            'cols' => ['name', 'email', 'password'],
+            'desc' => ['Name', 'E-mail', 'Password'],
+            'input_types' => ['text', 'email', 'password'],
             'route' => 'user'
         ]);
     }
@@ -45,31 +47,40 @@ class UserController extends Controller
     public function store() {
         $request = request();
         if (isset($request->id)) { // edit
-            $validatedRequest = $request->validate([
-                'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($request->id)],
-            ]);
+            if (is_null($request->password)) {
+                $validatedRequest = $request->validate([
+                    'name' => ['required', 'string', 'max:255'],
+                    'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($request->id)],
+                ]);
+            } else {
+                $validatedRequest = $request->validate([
+                    'name' => ['required', 'string', 'max:255'],
+                    'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($request->id)],
+                    'password' => ['required', Password::defaults()]
+                ]);
+                $validatedRequest['password'] = Hash::make($validatedRequest['password']);
+            }
             $user = User::where('id', $request->id)->first();
             $user->update($validatedRequest);
-            return redirect('/user/index');
+            return redirect('/user');
         } else { // create
             $validatedRequest = $request->validate([
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => ['required', Rules\Password::defaults()]
+                'password' => ['required', Password::defaults()]
             ]);
             User::create([
                 'name' => $validatedRequest['name'],
                 'email' => $validatedRequest['email'],
                 'password' => Hash::make($validatedRequest['password'])
             ]);
-            return redirect('/user/index');
+            return redirect('/user');
         }
     }
 
     public function destroy($id) {
         $user = User::where('id', $id)->first();
         $user->delete();
-        return redirect('/user/index');
+        return redirect('/user');
     }
 }

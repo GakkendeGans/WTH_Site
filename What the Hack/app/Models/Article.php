@@ -11,6 +11,8 @@ class Article extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = ['header_image', 'title', 'body', 'menu_id'];
+
     public function menu(): BelongsTo
     {
         return $this->belongsTo(Menu::class);
