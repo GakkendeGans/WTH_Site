@@ -1,0 +1,17 @@
+.table {
+    width: 100%;
+    th {
+        background-color: $colour-primary-default;
+        color: $colour-white;
+        text-align: left;
+        padding: 8px 12px;
+        font-size: $font-size-p;
+        font-weight: $font-weight-bold;
+    }
+    td {
+        padding: 8px 12px;
+    }
+    tr:nth-child(odd) {
+        background-color: $colour-white-darker;
+    }
+}

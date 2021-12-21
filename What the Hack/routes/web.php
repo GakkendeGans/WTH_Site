@@ -1,0 +1,60 @@
+<?php
+
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\UserController;
+use App\Models\Menu;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/user/index', [UserController::class, 'index']);
+    Route::get('/user/create', [UserController::class, 'create']);
+    Route::post('/user/store', [UserController::class, 'store']);
+    Route::get('/user/{id}', [UserController::class, 'show']);
+    Route::get('/user/{id}/edit', [UserController::class, 'edit']);
+    Route::delete('/user/{id}/destroy', [UserController::class, 'destroy']);
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/menu/index', [MenuController::class, 'index']);
+    Route::get('/menu/create', [MenuController::class, 'create']);
+    Route::post('/menu/store', [MenuController::class, 'store']);
+    Route::get('/menu/{id}', [MenuController::class, 'show']);
+    Route::get('/menu/{id}/edit', [MenuController::class, 'edit']);
+    Route::delete('/menu/{id}/destroy', [MenuController::class, 'destroy']);
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/article/index', [ArticleController::class, 'index']);
+    Route::get('/article/create', [ArticleController::class, 'create']);
+    Route::post('/article/store', [ArticleController::class, 'store']);
+    Route::get('/article/{id}', [ArticleController::class, 'show']);
+    Route::get('/article/{id}/edit', [ArticleController::class, 'edit']);
+    Route::delete('/article/{id}/destroy', [ArticleController::class, 'destroy']);
+});
+
+foreach (Menu::all() as $menu) {
+    $route = strtolower($menu->name);
+    Route::get("/$route", [MenuController::class, 'show']);
+}
+
+require __DIR__.'/auth.php';

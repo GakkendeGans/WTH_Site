@@ -1,0 +1,96 @@
+@import 'variables.scss';
+@import 'components/header.scss';
+@import 'components/footer.scss';
+@import 'components/buttons.scss';
+@import 'components/input.scss';
+@import 'components/underline.scss';
+@import 'components/textLink.scss';
+@import 'components/table.scss';
+
+@font-face {
+    font-family: DINPro;
+    font-style: normal;
+    font-weight: $font-weight-light;
+    src: url('/fonts/What_The_hack fonts/DINPro-Light.otf');
+}
+
+@font-face {
+    font-family: DINPro;
+    font-style: normal;
+    font-weight: $font-weight-normal;
+    src: url('/fonts/What_The_hack fonts/DINPro-Regular.otf');
+}
+
+@font-face {
+    font-family: DINPro;
+    font-style: normal;
+    font-weight: $font-weight-medium;
+    src: url('/fonts/What_The_hack fonts/DINPro-Medium.otf');
+}
+
+@font-face {
+    font-family: DINPro;
+    font-style: normal;
+    font-weight: $font-weight-bold;
+    src: url('/fonts/What_The_hack fonts/DINPro-Bold.otf');
+}
+
+body {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    height: 100vh;
+    max-height: 100vh;
+}
+
+.typography {
+    h1 {
+        font-size: $font-size-h1;
+        font-weight: $font-weight-bold;
+        line-height: $font-line_height-h1;
+    }
+    h2 {
+        font-size: $font-size-h2;
+        font-weight: $font-weight-bold;
+        line-height: $font-line_height-h2;
+    }
+    h3 {
+        font-size: $font-size-h3;
+        font-weight: $font-weight-medium;
+        line-height: $font-line_height-h3;
+    }
+    h4 {
+        font-size: $font-size-h4;
+        font-weight: $font-weight-medium;
+        line-height: $font-line_height-h4;
+    }
+    h5 {
+        font-size: $font-size-h5;
+        font-weight: $font-weight-normal;
+        line-height: $font-line_height-h5;
+    }
+    p {
+        font-size: $font-size-p;
+        font-weight: $font-weight-normal;
+    }
+    ol {
+        list-style-type: auto;
+        padding-left: 32px;
+    }
+    ul {
+        list-style-type: disc;
+        padding-left: 32px;
+    }
+    blockquote {
+        padding-left: 32px;
+        border-left: 8px solid $colour-secondary-lighter;
+    }
+    .ql-align-justify {
+        min-height: 32px;
+    }
+}
+
+.pageGrid {
+    height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}

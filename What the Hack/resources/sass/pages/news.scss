@@ -1,0 +1,27 @@
+.newsIndex {
+    &__imageHeader {
+        width: 100%;
+        height: 400px;
+        background-color: $colour-secondary-lightest;
+    }
+    &__article {
+        &__image {
+            width: 100%;
+            height: 240px;
+            background-color: $colour-secondary-lightest;
+        }
+        &:hover {
+            color: $colour-primary-lighter;
+        }
+        &:active {
+            color: $colour-primary-lightest;
+        }
+    }
+}
+
+.article {
+    &__thinText {
+        font-size: $font-size-p;
+        font-weight: $font-weight-light;
+    }
+}

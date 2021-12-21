@@ -1,0 +1,315 @@
+.header {
+  background-color: #FFFFFF;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+.header nav {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+.header nav a:not(:last-child) {
+  margin-right: 48px;
+}
+.header__innerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0;
+}
+.header__navUnderline {
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  margin-top: 16px;
+  background: white;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #c93e9d 70%, #9d2c79 100%);
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 0px;
+  background-image: url("/images/backgrounds/footer_bg.png");
+  background-color: #3c0b24;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.footer h5 {
+  color: #FFFFFF;
+}
+
+.button__primary {
+  background-color: #9D2C79;
+  color: #FFFFFF;
+  border-radius: 4px;
+  transition-duration: 0.2s;
+}
+.button__primary__verySmall {
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-weight: 300;
+}
+.button__primary__small {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: normal;
+}
+.button__primary__medium {
+  padding: 16px 32px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.button__primary__large {
+  padding: 20px 40px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.button__primary:hover {
+  background-color: #C93E9D;
+}
+.button__primary:active {
+  background-color: #D66EB5;
+}
+.button__secondary {
+  background-color: #000000;
+  color: #FFFFFF;
+  border-radius: 4px;
+  transition-duration: 0.2s;
+}
+.button__secondary__verySmall {
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-weight: 300;
+}
+.button__secondary__small {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: normal;
+}
+.button__secondary__medium {
+  padding: 16px 32px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.button__secondary__large {
+  padding: 20px 40px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.button__secondary:hover {
+  background-color: #333333;
+}
+.button__secondary:active {
+  background-color: #666666;
+}
+.button__tertiary {
+  color: #000000;
+  font-size: 1rem;
+  font-weight: normal;
+}
+.button__tertiary:hover {
+  color: #C93E9D;
+}
+.button__tertiary:active {
+  color: #C93E9D;
+}
+
+.input__text {
+  display: flex;
+  flex-direction: column;
+  color: #000000;
+}
+.input__text label {
+  font-size: 1rem;
+  font-weight: 300;
+  padding-bottom: 4px;
+}
+.input__text input, .input__text textarea {
+  padding: 8px 12px;
+  border: 2px solid #000000;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: normal;
+}
+.input__text textarea {
+  width: 100%;
+  min-height: 320px;
+}
+.input__text:hover {
+  color: #C93E9D;
+}
+.input__text:hover input, .input__text:hover textarea {
+  border: 2px solid #C93E9D;
+}
+.input__text:focus-within {
+  color: #C93E9D;
+}
+.input__text:focus-within input, .input__text:focus-within textarea {
+  border: 2px solid #C93E9D;
+}
+
+.quillInput label {
+  font-size: 1rem;
+  font-weight: 300;
+}
+.quillInput__container {
+  margin-top: 4px;
+  border: 2px solid #000000;
+  border-radius: 4px;
+}
+.quillInput__container .ql-container {
+  border: none;
+  height: 480px;
+}
+.quillInput__container .ql-toolbar {
+  border: none;
+  border-bottom: 1px solid #000000;
+}
+.quillInput:hover label, .quillInput:focus-within label {
+  color: #C93E9D;
+}
+.quillInput:hover > div, .quillInput:focus-within > div {
+  border: 2px solid #C93E9D;
+}
+
+.underline {
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  margin-top: 16px;
+}
+.underline__rightToLeft {
+  background: white;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #c93e9d 70%, #9d2c79 100%);
+}
+.underline__leftToRight {
+  background: #9d2c79;
+  background: linear-gradient(90deg, #9d2c79 0%, #c93e9d 30%, rgba(255, 255, 255, 0) 100%);
+}
+.underline__middle {
+  background: white;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #c93e9d 35%, #9d2c79 50%, #c93e9d 65%, rgba(255, 255, 255, 0) 100%);
+}
+
+.textLink {
+  transition-duration: 0.2s;
+}
+.textLink:hover {
+  color: #C93E9D;
+}
+.textLink:active {
+  color: #D66EB5;
+}
+.textLink__black {
+  color: #000000;
+}
+.textLink__red {
+  color: #C93838;
+}
+
+.table {
+  width: 100%;
+}
+.table th {
+  background-color: #9D2C79;
+  color: #FFFFFF;
+  text-align: left;
+  padding: 8px 12px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.table td {
+  padding: 8px 12px;
+}
+.table tr:nth-child(odd) {
+  background-color: #EFEFEF;
+}
+
+@font-face {
+  font-family: DINPro;
+  font-style: normal;
+  font-weight: 300;
+  src: url("/fonts/What_The_hack fonts/DINPro-Light.otf");
+}
+@font-face {
+  font-family: DINPro;
+  font-style: normal;
+  font-weight: normal;
+  src: url("/fonts/What_The_hack fonts/DINPro-Regular.otf");
+}
+@font-face {
+  font-family: DINPro;
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/What_The_hack fonts/DINPro-Medium.otf");
+}
+@font-face {
+  font-family: DINPro;
+  font-style: normal;
+  font-weight: bold;
+  src: url("/fonts/What_The_hack fonts/DINPro-Bold.otf");
+}
+body {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  height: 100vh;
+  max-height: 100vh;
+}
+
+.typography h1 {
+  font-size: 3.052rem;
+  font-weight: bold;
+  line-height: 57.22px;
+}
+.typography h2 {
+  font-size: 2.441rem;
+  font-weight: bold;
+  line-height: 45.77px;
+}
+.typography h3 {
+  font-size: 1.953rem;
+  font-weight: 500;
+  line-height: 36.62px;
+}
+.typography h4 {
+  font-size: 1.563rem;
+  font-weight: 500;
+  line-height: 29.3px;
+}
+.typography h5 {
+  font-size: 1.25rem;
+  font-weight: normal;
+  line-height: 23.44px;
+}
+.typography p {
+  font-size: 1rem;
+  font-weight: normal;
+}
+.typography ol {
+  list-style-type: auto;
+  padding-left: 32px;
+}
+.typography ul {
+  list-style-type: disc;
+  padding-left: 32px;
+}
+.typography blockquote {
+  padding-left: 32px;
+  border-left: 8px solid #333333;
+}
+.typography .ql-align-justify {
+  min-height: 32px;
+}
+
+.pageGrid {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}

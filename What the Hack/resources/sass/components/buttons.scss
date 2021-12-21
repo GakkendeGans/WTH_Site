@@ -1,0 +1,77 @@
+.button {
+    &__primary {
+        background-color: $colour-primary-default;
+        color: $colour-white;
+        border-radius: 4px;
+        transition-duration: 0.2s;
+        &__verySmall {
+            padding: 8px 16px;
+            font-size: $font-size-p;
+            font-weight: $font-weight-light;
+        }
+        &__small {
+            padding: 12px 24px;
+            font-size: $font-size-p;
+            font-weight: $font-weight-normal;
+        }
+        &__medium {
+            padding: 16px 32px;
+            font-size: $font-size-p;
+            font-weight: $font-weight-medium;
+        }
+        &__large {
+            padding: 20px 40px;
+            font-size: $font-size-p;
+            font-weight: $font-weight-bold;
+        }
+        &:hover {
+            background-color: $colour-primary-lighter;
+        }
+        &:active {
+            background-color: $colour-primary-lightest;
+        }
+    }
+    &__secondary {
+        background-color: $colour-secondary-default;
+        color: $colour-white;
+        border-radius: 4px;
+        transition-duration: 0.2s;
+        &__verySmall {
+            padding: 8px 16px;
+            font-size: $font-size-p;
+            font-weight: $font-weight-light;
+        }
+        &__small {
+            padding: 12px 24px;
+            font-size: $font-size-p;
+            font-weight: $font-weight-normal;
+        }
+        &__medium {
+            padding: 16px 32px;
+            font-size: $font-size-p;
+            font-weight: $font-weight-medium;
+        }
+        &__large {
+            padding: 20px 40px;
+            font-size: $font-size-p;
+            font-weight: $font-weight-bold;
+        }
+        &:hover {
+            background-color: $colour-secondary-lighter;
+        }
+        &:active {
+            background-color: $colour-secondary-lightest;
+        }
+    }
+    &__tertiary {
+        color: $colour-secondary-default;
+        font-size: $font-size-p;
+        font-weight: $font-weight-normal;
+        &:hover {
+            color: $colour-primary-lighter;
+        }
+        &:active {
+            color: $colour-primary-lighter;
+        }
+    }
+}

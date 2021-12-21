@@ -1,0 +1,15 @@
+.textLink {
+    transition-duration: 0.2s;
+    &:hover {
+        color: $colour-primary-lighter;
+    }
+    &:active {
+        color: $colour-primary-lightest;
+    }
+    &__black {
+        color: $colour-secondary-default;
+    }
+    &__red {
+        color: $colour-danger;
+    }
+}
