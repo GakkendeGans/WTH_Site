@@ -10,7 +10,7 @@
 {{--            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">--}}
 {{--                <div class="p-6 bg-white border-b border-gray-200">--}}
 {{--                    <a href="/user/index">User</a><br>--}}
-{{--                    <a href="/menu/index">Menu</a><br>--}}
+{{--                    <a href="/page/index">Page</a><br>--}}
 {{--                    <a href="/article/index">Article</a><br>--}}
 {{--                </div>--}}
 {{--            </div>--}}
@@ -26,8 +26,8 @@
             <h1 class="col-span-12">Dashboard</h1>
             <ul class="col-span-12">
                 <li><a class="textLink" href="/user">User</a></li>
-                <li><a class="textLink" href="/menu">Menu</a></li>
-                <li><a class="textLink" href="/cat">Category</a></li>
+                <!-- <li><a class="textLink" href="/viewtype">Viewtype</a></li> -->
+                <li><a class="textLink" href="/page">Page</a></li>
                 <li><a class="textLink" href="/article">Article</a></li>
             </ul>
         </div>

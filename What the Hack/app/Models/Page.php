@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Menu extends Model
+class Page extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['name', 'category_id'];
+    protected $fillable = ['name', 'viewtype_id'];
 
-    public function category(): BelongsTo
+    public function viewtype(): BelongsTo
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Viewtype::class);
     }
 }

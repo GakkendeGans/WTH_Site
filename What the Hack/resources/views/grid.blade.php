@@ -22,7 +22,7 @@
                             <div class="newsIndex__article__image mb-4"></div>
                             <h4>{{ $article->title }}</h4>
                         </a>
-                        <p>{{$article->body}}</p>
+                        <p>{!! htmlspecialchars_decode($article->body) !!}</p>
                     </article>
                 @empty
                     <p class="col-span-12">There are no articles.</p>

@@ -3,26 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
-use App\Models\Category;
-use App\Models\Menu;
+use App\Models\Viewtype;
+use App\Models\Page;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
     public function index() {
+        $pages = Article::join('pages', 'articles.page_id', '=', 'pages.id')
+        ->select('articles.*', 'pages.name as pagename')
+        ->get();
         return view('index', [
-            'data' => Article::all(),
-            'cols' => ['title'],
-            'desc' => ['Title'],
+            'data' => $pages,
+            'cols' => ['title', 'pagename'],
+            'desc' => ['Title', 'Page'],
             'route' => 'article'
         ]);
     }
 
     public function home(Request $request) {
         $uri = 'main';
-        $menu = Menu::where('name',$uri)->first();
-        $cat = Category::where('id',$menu->category_id)->first();
-        $article = Article::all()->where('menu_id', $menu->id);
+        $page = Page::where('name',$uri)->first();
+        $cat = Viewtype::where('id',$page->viewtype_id)->first();
+        $article = Article::all()->where('page_id', $page->id);
         return view($cat->blade, [
             'title' => $uri[1],
             'articles' => $article,
@@ -30,10 +33,11 @@ class ArticleController extends Controller
     }
 
     public function show(Request $request) {
-        $uri = explode('/',$request->path());
-        $menu = Menu::where('name',$uri[1])->first();
-        $cat = Category::where('id',$menu->category_id)->first();
-        $article = Article::all()->where('menu_id', $menu->id);
+        // $uri = explode('/',$request->path());
+        $uri = $request->path();
+        $page = Page::where('name',$uri)->first();
+        $cat = Viewtype::where('id',$page->viewtype_id)->first();
+        $article = Article::all()->where('page_id', $page->id);
         return view($cat->blade, [
             'title' => $uri[1],
             'articles' => $article,
@@ -42,10 +46,10 @@ class ArticleController extends Controller
 
     public function create() {
         return view('create', [
-            'cols' => ['header_image', 'title', 'body', 'menu_id'],
-            'desc' => ['Header image', 'Title', 'Body', 'Menu'],
+            'cols' => ['header_image', 'title', 'body', 'page_id'],
+            'desc' => ['Header image', 'Title', 'Body', 'Page'],
             'input_types' => ['text', 'text', 'text', 'select'],
-            'select_options' => Menu::all(),
+            'select_options' => Page::all(),
             'route' => 'article'
         ]);
     }
@@ -54,10 +58,10 @@ class ArticleController extends Controller
         $article = Article::where('id', $id)->first();
         return view('create', [
             'data' => $article,
-            'cols' => ['header_image', 'title', 'body', 'menu_id'],
-            'desc' => ['Header image', 'Title', 'Body', 'Menu'],
+            'cols' => ['header_image', 'title', 'body', 'page_id'],
+            'desc' => ['Header image', 'Title', 'Body', 'Page'],
             'input_types' => ['text', 'text', 'text', 'select'],
-            'select_options' => Menu::all(),
+            'select_options' => Page::all(),
             'route' => 'article'
         ]);
     }
@@ -69,7 +73,7 @@ class ArticleController extends Controller
             'header_image' => ['active_url', 'max:255'],
             'title' => ['required', 'string', 'max:255'],
             'body' => ['required'],
-            'menu_id' => ['required', 'integer']
+            'page_id' => ['required', 'integer']
         ]);
         if (isset($request->id)) { // edit
             $article = Article::where('id', $request->id)->first();
@@ -82,8 +86,8 @@ class ArticleController extends Controller
     }
 
     public function destroy($id) {
-        $menu = Article::where('id', $id)->first();
-        $menu->delete();
+        $article = Article::where('id', $id)->first();
+        $article->delete();
         return redirect('/article');
     }
 }

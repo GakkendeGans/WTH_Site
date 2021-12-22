@@ -3,7 +3,7 @@
 @section('content')
     <div class="container mx-auto h-full">
         <div class="grid grid-cols-12 mb-16 mx-32 mt-8 gap-8">
-            <h1 class="col-span-12">{{ ucfirst($route) }}</h1>
+            <h1 class="col-span-12">{{ ucfirst($route).'s' }}</h1>
             <form action="/{{ $route }}/create" method="GET" class="mb-2">
                 <input class="buttonPrimary button__primary button__primary__small" type="submit" value="create">
             </form>

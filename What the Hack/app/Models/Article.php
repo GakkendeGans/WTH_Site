@@ -11,10 +11,10 @@ class Article extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['header_image', 'title', 'body', 'menu_id'];
+    protected $fillable = ['header_image', 'title', 'body', 'page_id'];
 
-    public function menu(): BelongsTo
+    public function page(): BelongsTo
     {
-        return $this->belongsTo(Menu::class);
+        return $this->belongsTo(Page::class);
     }
 }

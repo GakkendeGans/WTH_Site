@@ -18,7 +18,7 @@ class CreateArticlesTable extends Migration
             $table->string('header_image');
             $table->string('title');
             $table->text('body');
-            $table->foreignId('menu_id')->constrained();
+            $table->foreignId('page_id')->constrained();
             $table->timestamps();
             $table->softDeletes();
         });

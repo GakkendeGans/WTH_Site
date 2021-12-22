@@ -5,9 +5,9 @@
         <div class="newsIndex__imageHeader"></div>
         <div class="pageContent container mx-auto">
             <div class="grid grid-cols-12 mb-16 mt-8 mx-32 gap-8">
-                @if(isset($data[0]))
+            @forelse($articles as $article)
                     <article class="col-span-6 col-start-4">
-                        <h1 class="pb-8">{{ $data[0]->title }}</h1>
+                        <h1 class="pb-8">{{ $article->title }}</h1>
                         <div class="pb-8 flex">
                             <p class="article__thinText pr-4">Author: TBD
 {{--                                @php--}}
@@ -26,15 +26,15 @@
 {{--                                    }--}}
 {{--                                @endphp--}}
                             </p>
-                            <p class="article__thinText">Date posted: {{ $data[0]->created_at }}</p>
+                            <p class="article__thinText">Date posted: {{ $article->created_at }}</p>
                         </div>
                         @php
-                            echo html_entity_decode($data[0]->body);
+                            echo html_entity_decode($article->body);
                         @endphp
                     </article>
-                @else
+                @empty
                     This page has no article to show.
-                @endif
+                @endforelse
             </div>
         </div>
     </div>

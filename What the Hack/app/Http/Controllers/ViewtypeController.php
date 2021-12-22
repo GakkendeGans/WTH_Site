@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Viewtype;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class ViewtypeController extends Controller
 {
     public function index() {
         return view('index', [
-            'data' => Category::all(),
+            'data' => Viewtype::all(),
             'cols' => ['name'],
             'desc' => ['blade'],
-            'route' => 'cat'
+            'route' => 'viewtype'
         ]);
     }
 
@@ -25,18 +25,18 @@ class CategoryController extends Controller
             'cols' => ['name', 'blade'],
             'desc' => ['Name', 'Blade'],
             'input_types' => ['text', 'text'],
-            'route' => 'cat'
+            'route' => 'viewtype'
         ]);
     }
 
     public function edit($id) {
-        $menu = Category::where('id', $id)->first();
+        $model = Viewtype::where('id', $id)->first();
         return view('create', [
-            'data' => $menu,
+            'data' => $model,
             'cols' => ['name', 'blade'],
             'desc' => ['Name', 'Blade'],
             'input_types' => ['text', 'text'],
-            'route' => 'cat'
+            'route' => 'viewtype'
         ]);
     }
 
@@ -47,22 +47,22 @@ class CategoryController extends Controller
             $validatedRequest = $request->validate([
                 'blade' => ['required', 'string', 'max:255']
             ]);
-            $model = Category::where('id', $request->id)->first();
+            $model = Viewtype::where('id', $request->id)->first();
             $model->update($validatedRequest);
-            return redirect('/cat');
+            return redirect('/viewtype');
         } else { // create
             $validatedRequest = $request->validate([
-                'name' => ['required', 'string', 'max:255', 'unique:categories'],
+                'name' => ['required', 'string', 'max:255', 'unique:viewtypes'],
                 'blade' => ['required', 'string', 'max:255']
             ]);
-            Category::create($validatedRequest);
-            return redirect('/cat');
+            Viewtype::create($validatedRequest);
+            return redirect('/viewtype');
         }
     }
 
     public function destroy($id) {
-        $model = Category::where('id', $id)->first();
+        $model = Viewtype::where('id', $id)->first();
         $model->delete();
-        return redirect('/cat');
+        return redirect('/viewtype');
     }
 }
