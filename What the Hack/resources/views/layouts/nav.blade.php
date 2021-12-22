@@ -1,7 +1,11 @@
 <nav>
     @auth
         <a class='textLink' href='/dashboard'>Dashboard</a>
+        <a class='textLink' href='/logout'>Logout</a>
     @endauth
+    @guest
+        <a class='textLink' href='/login'>Login</a>
+    @endguest
     @php
         $menuItems = \App\Models\Menu::all();
         foreach ($menuItems as $menuItem) {

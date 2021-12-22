@@ -18,6 +18,17 @@ class ArticleController extends Controller
         ]);
     }
 
+    public function home(Request $request) {
+        $uri = 'main';
+        $menu = Menu::where('name',$uri)->first();
+        $cat = Category::where('id',$menu->category_id)->first();
+        $article = Article::all()->where('menu_id', $menu->id);
+        return view($cat->blade, [
+            'title' => $uri[1],
+            'articles' => $article,
+        ]);
+    }
+
     public function show(Request $request) {
         $uri = explode('/',$request->path());
         $menu = Menu::where('name',$uri[1])->first();
