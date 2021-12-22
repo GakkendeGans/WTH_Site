@@ -29,16 +29,18 @@ Route::get('/dashboard', function () {
 
 $mainmenu = [['user',UserController::class],['cat',CategoryController::class],['menu', MenuController::class], ['article', ArticleController::class]];
 
-//Route::middleware('auth')->group(function () {
+
     foreach($mainmenu as &$menu) {
-        Route::get($menu[0].'/', [$menu[1], 'index']);
-        Route::get($menu[0].'/create', [$menu[1], 'create']);
-        Route::post($menu[0].'/store', [$menu[1], 'store']);
-        Route::get($menu[0].'/{id}', [$menu[1], 'show']);
-        Route::get($menu[0].'/{id}/edit', [$menu[1], 'edit']);
-        Route::delete($menu[0].'/{id}/destroy', [$menu[1], 'destroy']);
+        //Route::middleware('auth')->group(function () {
+            Route::get($menu[0].'/', [$menu[1], 'index'])->middleware(['auth']);
+            Route::get($menu[0].'/create', [$menu[1], 'create'])->middleware(['auth']);
+            Route::post($menu[0].'/store', [$menu[1], 'store'])->middleware(['auth']);
+            Route::get($menu[0].'/{id}', [$menu[1], 'show'])->middleware(['auth']);
+            Route::get($menu[0].'/{id}/edit', [$menu[1], 'edit'])->middleware(['auth']);
+            Route::delete($menu[0].'/{id}/destroy', [$menu[1], 'destroy'])->middleware(['auth']);
+        //});
     }
-//}
+
 // Route::middleware('auth')->group(function () {
 //     Route::get('/user/index', [UserController::class, 'index']);
 //     Route::get('/user/create', [UserController::class, 'create']);
