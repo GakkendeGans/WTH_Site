@@ -30,10 +30,10 @@ class CategoryController extends Controller
     }
 
     public function edit($id) {
-        $menu = Menu::where('id', $id)->first();
+        $menu = Category::where('id', $id)->first();
         return view('create', [
             'data' => $menu,
-            'cols' => ['name', 'balde'],
+            'cols' => ['name', 'blade'],
             'desc' => ['Name', 'Blade'],
             'input_types' => ['text', 'text'],
             'route' => 'cat'
@@ -42,15 +42,19 @@ class CategoryController extends Controller
 
     public function store() {
         $request = request();
-        $validatedRequest = $request->validate([
-            'name' => ['required', 'string', 'max:255', 'unique:categories'],
-            'blade' => ['required', 'string', 'max:255']
-        ]);
+
         if (isset($request->id)) { // edit
+            $validatedRequest = $request->validate([
+                'blade' => ['required', 'string', 'max:255']
+            ]);
             $model = Category::where('id', $request->id)->first();
             $model->update($validatedRequest);
             return redirect('/cat');
         } else { // create
+            $validatedRequest = $request->validate([
+                'name' => ['required', 'string', 'max:255', 'unique:categories'],
+                'blade' => ['required', 'string', 'max:255']
+            ]);
             Category::create($validatedRequest);
             return redirect('/cat');
         }
