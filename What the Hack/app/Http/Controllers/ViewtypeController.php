@@ -10,8 +10,8 @@ class ViewtypeController extends Controller
     public function index() {
         return view('index', [
             'data' => Viewtype::all(),
-            'cols' => ['name'],
-            'desc' => ['blade'],
+            'cols' => ['name', 'blade'],
+            'desc' => ['Name', 'Blade'],
             'route' => 'viewtype'
         ]);
     }

@@ -22,12 +22,18 @@ class ArticleController extends Controller
     }
 
     public function home(Request $request) {
-        $uri = 'main';
+        $uri = 'home';
         $page = Page::where('name',$uri)->first();
-        $cat = Viewtype::where('id',$page->viewtype_id)->first();
-        $article = Article::all()->where('page_id', $page->id);
-        return view($cat->blade, [
-            'title' => $uri[1],
+        if (is_null($page)) {
+            $article = null;
+            $blade = 'plain';
+        } else {
+            $cat = Viewtype::where('id',$page->viewtype_id)->first();
+            $blade = $cat->blade;
+            $article = Article::all()->where('page_id', $page->id);
+        }
+        return view($blade, [
+            'title' => $uri,
             'articles' => $article,
         ]);
     }
