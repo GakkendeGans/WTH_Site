@@ -7,8 +7,7 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+        @yield('summernote')
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -22,7 +21,7 @@
         <div class="pageGrid">
             <div style="height: 112px"></div>
             <header class="header">
-                <div class="container mx-auto header__innerContainer px-32">
+                <div class="container mx-auto header__innerContainer py-6 px-32">
                     <div class="header__logo">
                         <a href="/">
                             <img src="/images/logo/WHATtheHACK_logo_h64.png">

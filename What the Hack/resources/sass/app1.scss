@@ -43,6 +43,7 @@ body {
 }
 
 .typography {
+    font-family: DINPro;
     h1 {
         font-size: $font-size-h1;
         font-weight: $font-weight-bold;
@@ -94,3 +95,4 @@ body {
     display: grid;
     grid-template-rows: auto 1fr auto;
 }
+

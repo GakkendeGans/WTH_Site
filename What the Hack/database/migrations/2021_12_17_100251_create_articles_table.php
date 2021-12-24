@@ -15,7 +15,7 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->string('header_image');
+            $table->string('header_image')->nullable();
             $table->string('title');
             $table->text('body');
             $table->foreignId('page_id')->constrained();

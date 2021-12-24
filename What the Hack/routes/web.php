@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
 Route::get('/', [ArticleController::class, 'home']);
 
 Route::get('/dashboard', function () {
@@ -28,7 +29,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 $mainmenu = [['user',UserController::class],['viewtype',ViewtypeController::class],['page', PageController::class], ['article', ArticleController::class]];
-
 
 foreach($mainmenu as &$menu) {
         Route::get($menu[0].'/', [$menu[1], 'index'])->middleware(['auth']);
@@ -43,4 +43,5 @@ foreach (Page::all() as $page) {
     $route = strtolower($page->name);
     Route::get("/$route", [ArticleController::class, 'show']);
 }
+
 require __DIR__.'/auth.php';

@@ -54,7 +54,7 @@ class ArticleController extends Controller
         return view('create', [
             'cols' => ['header_image', 'title', 'body', 'page_id'],
             'desc' => ['Header image', 'Title', 'Body', 'Page'],
-            'input_types' => ['text', 'text', 'text', 'select'],
+            'input_types' => ['file', 'text', 'text', 'select'],
             'select_options' => Page::all(),
             'route' => 'article'
         ]);
@@ -66,7 +66,7 @@ class ArticleController extends Controller
             'data' => $article,
             'cols' => ['header_image', 'title', 'body', 'page_id'],
             'desc' => ['Header image', 'Title', 'Body', 'Page'],
-            'input_types' => ['text', 'text', 'text', 'select'],
+            'input_types' => ['file', 'text', 'text', 'select'],
             'select_options' => Page::all(),
             'route' => 'article'
         ]);

@@ -17,7 +17,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 0;
 }
 .header__navUnderline {
   width: 100%;
@@ -131,7 +130,7 @@
   font-weight: 300;
   padding-bottom: 4px;
 }
-.input__text input, .input__text textarea {
+.input__text input, .input__text textarea, .input__text select {
   padding: 8px 12px;
   border: 2px solid #000000;
   border-radius: 4px;
@@ -155,27 +154,10 @@
   border: 2px solid #C93E9D;
 }
 
-.quillInput label {
-  font-size: 1rem;
-  font-weight: 300;
-}
-.quillInput__container {
-  margin-top: 4px;
+.note-editor.note-frame {
   border: 2px solid #000000;
-  border-radius: 4px;
 }
-.quillInput__container .ql-container {
-  border: none;
-  height: 480px;
-}
-.quillInput__container .ql-toolbar {
-  border: none;
-  border-bottom: 1px solid #000000;
-}
-.quillInput:hover label, .quillInput:focus-within label {
-  color: #C93E9D;
-}
-.quillInput:hover > div, .quillInput:focus-within > div {
+.note-editor.note-frame:hover, .note-editor.note-frame:focus-within {
   border: 2px solid #C93E9D;
 }
 
@@ -263,6 +245,9 @@ body {
   max-height: 100vh;
 }
 
+.typography {
+  font-family: DINPro;
+}
 .typography h1 {
   font-size: 3.052rem;
   font-weight: bold;

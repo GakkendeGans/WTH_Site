@@ -31,7 +31,7 @@
                             </p>
                             <p class="article__thinText">Date posted: {{ $article->created_at }}</p>
                         </div>
-                        <content>{!! htmlspecialchars_decode($article->body) !!}</content>
+                        <content class="summernoteContent">{!! htmlspecialchars_decode($article->body) !!}</content>
                     </article>
                 @endforeach
                 @endif
