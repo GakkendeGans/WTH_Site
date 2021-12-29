@@ -7,32 +7,33 @@
 @import 'components/textLink.scss';
 @import 'components/table.scss';
 
+
 @font-face {
     font-family: DINPro;
     font-style: normal;
     font-weight: $font-weight-light;
-    src: url('/fonts/What_The_hack fonts/DINPro-Light.otf');
+    src: url('/css/font/DINPro-Light.otf');
 }
 
 @font-face {
     font-family: DINPro;
     font-style: normal;
     font-weight: $font-weight-normal;
-    src: url('/fonts/What_The_hack fonts/DINPro-Regular.otf');
+    src: url('/css/font/DINPro-Regular.otf');
 }
 
 @font-face {
     font-family: DINPro;
     font-style: normal;
     font-weight: $font-weight-medium;
-    src: url('/fonts/What_The_hack fonts/DINPro-Medium.otf');
+    src: url('/css/font/DINPro-Medium.otf');
 }
 
 @font-face {
     font-family: DINPro;
     font-style: normal;
     font-weight: $font-weight-bold;
-    src: url('/fonts/What_The_hack fonts/DINPro-Bold.otf');
+    src: url('/css/font/DINPro-Bold.otf');
 }
 
 body {
@@ -42,6 +43,12 @@ body {
     max-height: 100vh;
 }
 
+// In verband met bootstrap in de create.blade
+html { 
+    font-size:unset;
+    -webkit-tap-highlight-color: unset;
+}
+  
 .typography {
     font-family: DINPro;
     h1 {

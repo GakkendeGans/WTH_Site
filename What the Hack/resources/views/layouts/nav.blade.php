@@ -2,8 +2,10 @@
     @php
         $pageItems = \App\Models\Page::all();
         foreach ($pageItems as $pageItem) {
-            $route = strtolower($pageItem->name);
-            echo "<a class='textLink' href='/$route'>$pageItem->name</a>";
+            if ($pageItem->name != 'Home') {
+                $route = strtolower($pageItem->name);
+                echo "<a class='textLink' href='/$route'>$pageItem->name</a>";
+            }
         }
     @endphp
     @auth

@@ -7,7 +7,7 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        @yield('quill')
+        @yield('cssextra')
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -39,6 +39,7 @@
                 <h5>© 2020 What-the-hack.eu</h5>
             </footer>
         </div>
+        @yield('jsextra')
     </body>
 {{--    <body class="font-sans antialiased">--}}
 {{--        <div class="min-h-screen bg-gray-100">--}}

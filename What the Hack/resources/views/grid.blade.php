@@ -1,5 +1,13 @@
 @extends('layouts.guest')
 
+@section('cssextra')
+    <link href="/css/font-awesome.css" rel="stylesheet">
+@endsection
+
+@section('jsextra')
+
+@endsection
+
 @section('content')
     <div>
         <div class="newsIndex__imageHeader"></div>
@@ -16,12 +24,20 @@
                 @forelse($articles as $article)
                     <article class="newsIndex__article col-span-4">
                         @if($article->header_image)
-                        <img  src="{{$article->header_image}}" alt="image">
+                        <img  src="images\uploads\{{$article->header_image}}" alt="image">
                         @endif
-                        <a class="textLink" href="/article/one/{{ $article->id . '-' . str_replace(' ', '-',strtolower($article->title)) }}">
+                        @auth
+                        <a class="textLink" href="/article/{{ $article->id }}/edit">
+                        @endauth
+                        @if($article->title[0]!='.')
                             <div class="newsIndex__article__image mb-4"></div>
                             <h4>{{ $article->title }}</h4>
+                        @else
+                            <BR>
+                        @endif
+                        @auth
                         </a>
+                        @endauth
                         <p>{!! htmlspecialchars_decode($article->body) !!}</p>
                     </article>
                 @empty

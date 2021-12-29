@@ -17,7 +17,7 @@ class CreateArticlesTable extends Migration
             $table->id();
             $table->string('header_image')->nullable();
             $table->string('title');
-            $table->text('body');
+            $table->mediumText('body');
             $table->foreignId('page_id')->constrained();
             $table->timestamps();
             $table->softDeletes();

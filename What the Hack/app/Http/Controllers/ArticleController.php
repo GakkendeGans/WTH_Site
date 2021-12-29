@@ -6,6 +6,10 @@ use App\Models\Article;
 use App\Models\Viewtype;
 use App\Models\Page;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
+use Illuminate\Validation\Rules\Exists;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
 {
@@ -41,6 +45,7 @@ class ArticleController extends Controller
     public function show(Request $request) {
         // $uri = explode('/',$request->path());
         $uri = $request->path();
+        $uri = str_replace("%20", " ", $uri);
         $page = Page::where('name',$uri)->first();
         $cat = Viewtype::where('id',$page->viewtype_id)->first();
         $article = Article::all()->where('page_id', $page->id);
@@ -51,10 +56,12 @@ class ArticleController extends Controller
     }
 
     public function create() {
+        $files = Storage::disk('publicimages')->allFiles('uploads');
         return view('create', [
-            'cols' => ['header_image', 'title', 'body', 'page_id'],
-            'desc' => ['Header image', 'Title', 'Body', 'Page'],
-            'input_types' => ['file', 'text', 'text', 'select'],
+            'cols' => ['header_image', 'existing_image', 'title', 'body', 'page_id'],
+            'desc' => ['Upload new header image', 'Choose existing header image', 'Title', 'Body', 'Page'],
+            'input_types' => ['file', 'fileselect', 'text', 'html', 'select'],
+            'file_options' => [$files, ''],
             'select_options' => Page::all(),
             'route' => 'article'
         ]);
@@ -62,25 +69,53 @@ class ArticleController extends Controller
 
     public function edit($id) {
         $article = Article::where('id', $id)->first();
+        $files = Storage::disk('publicimages')->allFiles('uploads');
+        foreach($files as $key => $file) {
+            $files[$key] = substr($file,8);
+        }
         return view('create', [
             'data' => $article,
-            'cols' => ['header_image', 'title', 'body', 'page_id'],
-            'desc' => ['Header image', 'Title', 'Body', 'Page'],
-            'input_types' => ['file', 'text', 'text', 'select'],
+            'cols' => ['header_image', 'existing_image', 'title', 'body', 'page_id'],
+            'desc' => ['Upload new header image', 'Choose existing header image', 'Title', 'Body', 'Page'],
+            'input_types' => ['file', 'fileselect', 'text', 'html', 'select'],
+            'file_options' => [$files,$article->header_image],
             'select_options' => Page::all(),
             'route' => 'article'
         ]);
     }
 
-    public function store() {
-        $request = request();
+    public function store(Request $request) {
+        // $request = request();
+        $fileName='';
+        if ($request->file()) {
+            $validatedRequest = $request->validate([
+                'header_image' => ['required', 'file', 'image']
+            ]);
+            $file = $request->file('header_image');
+            $fileName = $file->getClientOriginalName();
+            if (!file_exists(public_path().'/images/uploads/'.$fileName)) {
+                $request->file('header_image')->storePubliclyAs('uploads', $fileName,'publicimages');
+            }
+        }
+
         $validatedRequest = $request->validate([
-            //'header_image' => ['file', 'image'],
-            'header_image' => ['active_url', 'max:255'],
+            // 'header_image' => ['file', 'image'],
+            // 'header_image' => ['active_url', 'max:255'],
             'title' => ['required', 'string', 'max:255'],
-            'body' => ['required'],
+            'body' => ['required', 'max:640000'],
             'page_id' => ['required', 'integer']
         ]);
+
+
+        if ($fileName) {
+            $validatedRequest['header_image'] = $fileName;
+        } elseif ($request->existing_image) {
+            if ($request->existing_image=='-')
+                $validatedRequest['header_image'] = '';
+            else
+                $validatedRequest['header_image'] = $request->existing_image;
+        }
+
         if (isset($request->id)) { // edit
             $article = Article::where('id', $request->id)->first();
             $article->update($validatedRequest);

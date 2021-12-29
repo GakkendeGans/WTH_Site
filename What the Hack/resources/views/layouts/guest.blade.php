@@ -7,7 +7,7 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        @yield('summernote')
+        @yield('cssextra')
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -37,6 +37,7 @@
                 <h5>© 2020 What-the-hack.eu</h5>
             </footer>
         </div>
+        @yield('jsextra')
     </body>
 {{--    <body>--}}
 {{--        <div class="font-sans text-gray-900 antialiased">--}}
