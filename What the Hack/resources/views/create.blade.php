@@ -13,7 +13,6 @@
     <script src="/js/bootstrap.min.js"></script>
     <link href="/css/font-awesome.css" rel="stylesheet">
     <script src="/js/summernote.js"></script>
-    <!-- <script src="/js/summernote-ext-faicon.js"></script> -->
 @endsection
 
 @section('jsextra')
