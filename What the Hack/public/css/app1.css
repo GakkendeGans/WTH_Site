@@ -10,7 +10,7 @@
   font-size: 1.25rem;
   font-weight: 500;
 }
-.header nav a:not(:last-child) {
+.header nav .item:not(:last-child) {
   margin-right: 48px;
 }
 .header__innerContainer {
@@ -302,4 +302,37 @@ html {
   height: 100%;
   display: grid;
   grid-template-rows: auto 1fr auto;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  text-align: center;
+  background-color: #f1f1f1;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.dropdown-content a {
+  padding: 16px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  color: #C93E9D;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  color: #D66EB5;
 }

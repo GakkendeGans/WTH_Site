@@ -8,7 +8,7 @@
  * summernote may be freely distributed under the MIT license.
  * 
  * Date: 2020-05-20T16:47Z
- * 
+ * https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')

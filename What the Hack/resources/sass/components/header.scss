@@ -8,7 +8,7 @@
         align-items: center;
         font-size: $font-size-h5;
         font-weight: $font-weight-medium;
-        a:not(:last-child) {
+        .item:not(:last-child) {
             margin-right: 48px;
         }
     }

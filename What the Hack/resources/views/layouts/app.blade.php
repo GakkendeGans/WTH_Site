@@ -20,8 +20,8 @@
     <body class="typography">
         <div class="pageGrid">
             <div style="height: 112px"></div>
-            <header class="header">
-                <div class="container mx-auto header__innerContainer py-6 px-32">
+            <header class="header container mx-auto header__innerContainer py-6 px-32">
+                <!-- <div class="container mx-auto header__innerContainer py-6 px-32"> -->
                     <div class="header__logo">
                         <a href="/">
                             <img src="/images/logo/WHATtheHACK_logo_h64.png">
@@ -30,9 +30,12 @@
                     <div>
                         @include('layouts.nav')
                     </div>
-                </div>
+                <!-- </div> -->
             </header>
             <main>
+                <!-- sidebar -->
+                @yield('sidebar')
+                <!-- content -->
                 @yield('content')
             </main>
             <footer class="footer">

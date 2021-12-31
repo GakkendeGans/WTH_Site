@@ -24,9 +24,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ArticleController::class, 'home']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 $mainmenu = [['user',UserController::class],['viewtype',ViewtypeController::class],['page', PageController::class], ['article', ArticleController::class]];
 

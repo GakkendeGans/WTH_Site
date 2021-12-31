@@ -4,12 +4,20 @@
         foreach ($pageItems as $pageItem) {
             if ($pageItem->name != 'Home') {
                 $route = strtolower($pageItem->name);
-                echo "<a class='textLink' href='/$route'>$pageItem->name</a>";
+                echo "<a class='textLink item' href='/$route'>$pageItem->name</a>";
             }
         }
     @endphp
     @auth
-        <a class='textLink' href='/dashboard'>Dashboard</a>
+        <div class="dropdown item">
+            <button class="dropbtn">Create/Edit</button>
+            <div class="dropdown-content">
+                <a href="/user">Users</a>
+                <a href="/page">Pages</a>
+                <a href="/article">Articles</a>
+                <!-- <a href="/viewtype">Viewtypes</a> -->
+            </div>
+        </div>
         <a class='textLink' href='/logout'>Logout</a>
     @endauth
     @guest
